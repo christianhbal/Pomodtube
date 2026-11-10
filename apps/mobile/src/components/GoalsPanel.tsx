@@ -24,7 +24,7 @@ const COLUMNS: {
   { kind: 'goal', title: 'Objetivos', placeholder: 'Nuevo objetivo' },
   {
     kind: 'exam',
-    title: 'Parciales y recup.',
+    title: 'Parciales y recuperatorios',
     placeholder: 'Parcial o recuperatorio',
   },
 ];
@@ -149,9 +149,28 @@ export function GoalsPanel() {
                 ) : (
                   items.map((goal) => (
                     <View key={goal.id} style={styles.item}>
-                      <Text style={styles.itemText} numberOfLines={2}>
-                        {goal.title}
-                      </Text>
+                      {goal.title.includes('|') ? (
+                        <View style={styles.columnsRow}>
+                          {goal.title.split('|').map((part, idx) => (
+                            <Text
+                              key={idx}
+                              numberOfLines={1}
+                              style={[
+                                styles.columnText,
+                                idx === 0 && styles.colLeft,
+                                idx === 1 && styles.colCenter,
+                                idx === 2 && styles.colRight,
+                              ]}
+                            >
+                              {part.trim()}
+                            </Text>
+                          ))}
+                        </View>
+                      ) : (
+                        <Text style={styles.itemText} numberOfLines={2}>
+                          {goal.title}
+                        </Text>
+                      )}
 
                       <Pressable
                         onPress={() => remove(goal)}
@@ -178,10 +197,11 @@ export function GoalsPanel() {
     </View>
   );
 }
-
 const styles = StyleSheet.create({
   wrap: {
-    flex: 1,
+    // Al fijar una altura (o minHeight), el panel superior se expande y deja ver más elementos
+    minHeight: 260,
+    maxHeight: 340,
     padding: 10,
     gap: 4,
   },
@@ -270,6 +290,29 @@ const styles = StyleSheet.create({
     fontSize: 11,
     lineHeight: 14,
   },
+  // --- NUEVOS ESTILOS PARA LAS 3 COLUMNAS ---
+  columnsRow: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  columnText: {
+    flex: 1, // Hace que cada sección ocupe exactamente 1/3 del ancho
+    color: colors.text,
+    fontSize: 11,
+    lineHeight: 14,
+  },
+  colLeft: {
+    textAlign: 'left',
+  },
+  colCenter: {
+    textAlign: 'center',
+  },
+  colRight: {
+    textAlign: 'right',
+    paddingRight: 6,
+  },
+  // ------------------------------------------
   removeButton: {
     width: 20,
     height: 20,
