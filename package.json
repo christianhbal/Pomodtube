@@ -1,22 +1,24 @@
 {
-  "name": "proyecto1",
-  "version": "1.0.0",
-  "main": "index.ts",
-  "dependencies": {
-    "expo": "~58.0.23",
-    "expo-status-bar": "~58.0.4",
-    "react": "19.3.0",
-    "react-native": "0.88.1"
-  },
-  "devDependencies": {
-    "@types/react": "~19.3.0",
-    "typescript": "~6.0.3"
-  },
+  "name": "foco",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Pomodoro con video de YouTube. Monorepo: app móvil + API.",
+  "workspaces": [
+    "apps/mobile",
+    "apps/backend"
+  ],
   "scripts": {
-    "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "web": "expo start --web"
+    "mobile": "npm run start -w @foco/mobile",
+    "mobile:android": "npm run android -w @foco/mobile",
+    "mobile:ios": "npm run ios -w @foco/mobile",
+    "mobile:web": "npm run web -w @foco/mobile",
+    "backend": "npm run dev -w @foco/backend",
+    "backend:build": "npm run build -w @foco/backend",
+    "backend:start": "npm run start -w @foco/backend",
+    "typecheck": "npm run typecheck -w @foco/mobile && npm run typecheck -w @foco/backend",
+    "lint": "npm run lint -w @foco/mobile"
   },
-  "private": true
+  "engines": {
+    "node": ">=22.13.0"
+  }
 }

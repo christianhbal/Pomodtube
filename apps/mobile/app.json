@@ -1,11 +1,12 @@
 {
   "expo": {
-    "name": "proyecto1",
+    "name": "Foco",
     "slug": "proyecto1",
     "version": "1.0.0",
-    "orientation": "portrait",
+    "orientation": "default",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
+    "backgroundColor": "#F4F8FD",
     "ios": {
       "supportsTablet": true
     },
@@ -20,6 +21,9 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      "expo-secure-store"
+    ]
   }
 }

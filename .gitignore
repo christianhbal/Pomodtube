@@ -30,12 +30,20 @@ yarn-error.*
 .DS_Store
 *.pem
 
-# local env files
-.env*.local
+# secretos — nunca commitear
+.env
+.env.*
+!.env.example
+!.env.*.example
+
+# datos locales del backend
+apps/backend/.data/
+apps/backend/dist/
+apps/backend/coverage/
 
 # typescript
 *.tsbuildinfo
 
 # generated native folders
-/ios
-/android
+/apps/mobile/ios
+/apps/mobile/android
