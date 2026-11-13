@@ -187,13 +187,13 @@ const styles = StyleSheet.create({
   },
   goalsLandscape: {
     flex: 0.34,
-    minHeight: 120,
-    maxHeight: 240,
+    minHeight: 248,
+    maxHeight: 300,
   },
   goalsPortrait: {
     flex: 0.32,
-    minHeight: 120,
-    maxHeight: 200,
+    minHeight: 200,
+    maxHeight: 220,
   },
   timerArea: {
     flex: 1,

@@ -11,6 +11,15 @@ function formatMinutes(total: number): string {
   return minutes === 0 ? `${hours} h` : `${hours} h ${minutes} min`;
 }
 
+/** Versión corta para las etiquetas de cada día: 150 → "2h 30m". */
+function formatDayMinutes(total: number): string {
+  if (total < 60) return `${total}m`;
+
+  const hours = Math.floor(total / 60);
+  const minutes = total % 60;
+  return minutes === 0 ? `${hours}h` : `${hours}h ${minutes}m`;
+}
+
 type Props = {
   days: DayStat[];
   totalMinutes: number;
@@ -96,8 +105,11 @@ export function WeeklyStats({ days, totalMinutes }: Props) {
             <Text style={[styles.label, day.isToday && styles.labelToday]}>
               {day.label}
             </Text>
-            <Text style={[styles.minutes, day.isToday && styles.minutesToday]}>
-              {day.minutes > 0 ? `${day.minutes}m` : '—'}
+            <Text
+              numberOfLines={1}
+              style={[styles.minutes, day.isToday && styles.minutesToday]}
+            >
+              {day.minutes > 0 ? formatDayMinutes(day.minutes) : '—'}
             </Text>
           </View>
         ))}

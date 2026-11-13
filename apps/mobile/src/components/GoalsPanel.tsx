@@ -199,10 +199,9 @@ export function GoalsPanel() {
 }
 const styles = StyleSheet.create({
   wrap: {
-    // Al fijar una altura (o minHeight), el panel superior se expande y deja ver más elementos
-    minHeight: 260,
-    maxHeight: 340,
-    padding: 10,
+    // La altura la define el contenedor de App.tsx; así no se superpone con el timer.
+    flex: 1,
+    padding: 8,
     gap: 4,
   },
   row: {
@@ -216,8 +215,8 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: colors.border,
     borderRadius: radius.md,
-    padding: 8,
-    gap: 6,
+    padding: 6,
+    gap: 4,
   },
   title: {
     color: colors.text,
@@ -233,7 +232,7 @@ const styles = StyleSheet.create({
   },
   input: {
     flex: 1,
-    height: 30,
+    height: 28,
     borderWidth: 1,
     borderColor: colors.border,
     borderRadius: radius.sm,
@@ -244,8 +243,8 @@ const styles = StyleSheet.create({
     backgroundColor: colors.bg,
   },
   addButton: {
-    width: 30,
-    height: 30,
+    width: 28,
+    height: 28,
     borderRadius: radius.sm,
     alignItems: 'center',
     justifyContent: 'center',
@@ -267,7 +266,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   listContent: {
-    gap: 4,
+    gap: 3,
     paddingBottom: 2,
   },
   empty: {
@@ -282,7 +281,7 @@ const styles = StyleSheet.create({
     borderRadius: radius.sm,
     paddingLeft: 8,
     paddingRight: 4,
-    paddingVertical: 4,
+    paddingVertical: 2,
   },
   itemText: {
     flex: 1,
